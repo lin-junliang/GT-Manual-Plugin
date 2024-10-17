@@ -97,7 +97,7 @@ export default new class Tools {
     res = await res.json()
     if (!res.data) return false
 
-    await e.reply(`请打开地址并完成验证\n${res.data.link}`, true)
+    await e.reply(`请打开地址并完成验证\n手机请复制链接到浏览器打开\n首次可能失败可再尝试一次！\n${res.data.link}`, false, { at: false, recallMsg: 30 })
 
     for (let i = 0; i < 80; i++) {
       let validate = await fetch(res.data.result)
