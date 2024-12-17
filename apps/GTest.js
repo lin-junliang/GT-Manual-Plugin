@@ -61,7 +61,7 @@ export class bbsVerification extends plugin {
 
     if (verify) {
       // await e.reply('已重新获取米游社验证，请重新执行命令', true)
-      await e.reply('过码成功，等待重新获取数据。')
+      // await e.reply('过码成功，等待重新获取数据。')
       await this.sleep(1000);
       return await mysApi.getData(type, data)
     } else {
