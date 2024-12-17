@@ -59,12 +59,24 @@ export class bbsVerification extends plugin {
 
     if (options.OnlyGtest) return verify
 
-    let res_true = await mysApi.getData(type, data)
-
-    if (!res_true || res_true?.retcode == 1034) {
+    if (verify) {
+      // await e.reply('已重新获取米游社验证，请重新执行命令', true)
+      await e.reply('过码成功，等待重新获取数据。')
+      await this.sleep(1000);
       return await mysApi.getData(type, data)
+    } else {
+      return options.res;
     }
-    return verify ? res_true : options.res
+
+    // return verify ? await mysApi.getData(type, data) : options.res
+  }
+
+  /**
+   * 休眠函数
+   * @param ms 毫秒
+   */
+  sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms))
   }
 
   getUrl(type, data = {}) {
